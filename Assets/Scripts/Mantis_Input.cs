@@ -5,9 +5,11 @@ public class Mantis_Input : MonoBehaviour {
 
     public Renderer rend;
     public GameObject Player;
-    public bool startGame = true;
+   
+    public bool runsRight = true;
     public bool grounded = false;
-    public float jumpForce = 2000.0f;
+    public float jumpForce = 200;
+    public bool stands = false;
     
 	// Use this for initialization
 	void Start () {
@@ -16,55 +18,80 @@ public class Mantis_Input : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        runnerMovementChecker();
         runnerMovement();
-        jump();
 	}
 
-    void runnerMovement()
+    void runnerMovementChecker()
     {
-        if (startGame)
-        {
-            rend.transform.Translate(Vector2.left*0.1f);
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
+        if (!stands) { 
+            if (runsRight)
+            {
+                rend.transform.Translate(Vector2.left * 0.25f);
+                transform.localRotation = Quaternion.Euler(0, 0, 0);
+            }
+            else if (!runsRight)
+            {
+                // Debug.Log("Shit has triggert");
+                rend.transform.Translate(Vector2.left * 0.25f);
+                //Player.GetComponent<Rigidbody2D>().AddForce(Vector2.right*speed);
+                transform.localRotation = Quaternion.Euler(0, 180, 0);
+            }
         }
-        else if(!startGame)
+        else if (stands)
         {
-            rend.transform.Translate(Vector2.right*0.1f);
-            //Player.GetComponent<Rigidbody2D>().AddForce(Vector2.right*speed);
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            rend.transform.Translate(Vector2.left * 0);
         }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
-    {
+    {       
+            
+
+
             if (coll.gameObject.name == "Ground")
             {
              grounded = true;
 
             } 
-            if (coll.gameObject.name == "RightWall")
+            else if (coll.gameObject.name == "RightWall")
             {
-                startGame = true;
+                runsRight = true;
                 
             }
             else if (coll.gameObject.name == "LeftWall")
             {
-                startGame = false;
+                runsRight = false;
                 
-        }
-        
-
+        } 
     }
 
-    
-    void jump()
+    void runnerMovement()
     {
         if (Input.GetKey("space") && grounded){
             grounded = false;
             Debug.Log("pressed jump");
-            Player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpForce);
+            if(runsRight)
+            Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(-100, 800));
+            else if (!runsRight)
+                Player.GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 800));
 
 
+        }
+
+        else if (Input.GetKey("a"))
+        {
+            stands = false;
+            runsRight = false;
+        }
+        else if (Input.GetKey("d"))
+        {
+            stands = false;
+            runsRight = true;
+        }
+        else if (Input.GetKey("s"))
+        {
+            stands = true;
         }
     }
 

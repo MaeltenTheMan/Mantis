@@ -1,0 +1,11 @@
+smoother jump
+"s" nach unten (ducken)
+soll sich schnell anfühlen
+camera soll sich beim springen mitbewegen ( kamera soll rütteln )
+
+Spielidee (man tötet insekten)//Amoklauf, je mehr man tötet, desto mehr bewaffnete insekten kommen.
+Bienen aus der luft, ameisen erde. 
+Man lädt mit jedem kill seine unverwundbarkeit auf. 
+bei berührung der gegner stirbt man (2 arten von gegnern, bewaffnet und unbewaffnet (bei bewaffnet 2 arten(fliegend und am boden)))
+--> ausser man ist gerade unverwundbar.
+
