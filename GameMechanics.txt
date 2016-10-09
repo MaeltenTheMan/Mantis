@@ -9,3 +9,10 @@ Man lädt mit jedem kill seine unverwundbarkeit auf.
 bei berührung der gegner stirbt man (2 arten von gegnern, bewaffnet und unbewaffnet (bei bewaffnet 2 arten(fliegend und am boden)))
 --> ausser man ist gerade unverwundbar.
 
+
+09.10.2016
+15 min konzept
+2Std research
+2,5 Programmierung
+0,5 Git erstellt etc
+
