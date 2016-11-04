@@ -10,7 +10,8 @@ public class Mantis_Input : MonoBehaviour {
     public bool grounded = false;
     public float jumpForce = 200;
     public bool stands = false;
-    
+    public float speed = 0.35f;
+
 	// Use this for initialization
 	void Start () {
 	    
@@ -27,13 +28,13 @@ public class Mantis_Input : MonoBehaviour {
         if (!stands) { 
             if (runsRight)
             {
-                rend.transform.Translate(Vector2.left * 0.25f);
+                rend.transform.Translate(Vector2.left * speed);
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
             }
             else if (!runsRight)
             {
                 // Debug.Log("Shit has triggert");
-                rend.transform.Translate(Vector2.left * 0.25f);
+                rend.transform.Translate(Vector2.left *speed);
                 //Player.GetComponent<Rigidbody2D>().AddForce(Vector2.right*speed);
                 transform.localRotation = Quaternion.Euler(0, 180, 0);
             }
